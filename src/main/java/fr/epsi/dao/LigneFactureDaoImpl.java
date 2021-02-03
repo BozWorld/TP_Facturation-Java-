@@ -1,5 +1,8 @@
 package fr.epsi.dao;
 
+import java.util.List;
+
+import javax.ejb.EJB;
 import javax.persistence.EntityManager;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
@@ -8,7 +11,8 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
-import fr.epsi.entite.ligneFacture;
+import fr.epsi.entite.Facture;
+import fr.epsi.entite.LigneFacture;
 
 public class LigneFactureDaoImpl implements LigneFactureDao {
 	
@@ -19,7 +23,7 @@ public class LigneFactureDaoImpl implements LigneFactureDao {
 		this.utx = utx;
 	}
 
-	public void create(ligneFacture l) {
+	public void create(LigneFacture l) {
 		try {
 			utx.begin();
 		} catch (NotSupportedException e1) {
@@ -52,6 +56,12 @@ public class LigneFactureDaoImpl implements LigneFactureDao {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	@EJB
+	public List<LigneFacture> getListLigneFacture() {
+		return em.createQuery("select l from LigneFacture l order by a.nom asc", LigneFacture.class)
+				 .getResultList();
 	}
 
 }

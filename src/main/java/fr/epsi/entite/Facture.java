@@ -1,5 +1,6 @@
 package fr.epsi.entite;
 import java.sql.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -7,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -23,13 +25,11 @@ public class Facture {
 	
 	private double prix;
 	
-	@OneToOne
-	@JoinTable(name = "Client")
+	@ManyToOne
 	private Client client;
 	
 	@OneToMany
-	@JoinTable(name = "ligneFacture")
-	private Set<ligneFacture> ligneFactureList;
+	private List<LigneFacture> ligneFactureList;
 	
 	public Date getdate() {
 		return date;
@@ -63,11 +63,11 @@ public class Facture {
 		this.client = client;
 	}
 	 
-	public Set<ligneFacture> getLigneFactureList() {
+	public List<LigneFacture> getLigneFactureList() {
 		return ligneFactureList;
 	}
 	
-	public void setLigneFactureList(Set<ligneFacture> lignefacturelist) {
+	public void setLigneFactureList(List<LigneFacture> lignefacturelist) {
 		this.ligneFactureList = lignefacturelist;
 	}
 	

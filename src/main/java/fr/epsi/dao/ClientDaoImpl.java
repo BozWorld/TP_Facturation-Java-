@@ -1,5 +1,8 @@
 package fr.epsi.dao;
 
+import java.util.List;
+
+import javax.ejb.EJB;
 import javax.persistence.EntityManager;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
@@ -8,7 +11,9 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
+import fr.epsi.entite.Article;
 import fr.epsi.entite.Client;
+import fr.epsi.entite.LigneFacture;
 
 public class ClientDaoImpl implements ClientDao {
 	
@@ -22,6 +27,9 @@ public class ClientDaoImpl implements ClientDao {
 	public void create(Client c) {
 		try {
 			utx.begin();
+			Client newClient = new Client();
+			newClient.setNom(c.getnom());
+			newClient.setAdresse(c.getadresse());
 		} catch (NotSupportedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -52,6 +60,11 @@ public class ClientDaoImpl implements ClientDao {
 			e.printStackTrace();
 		}
 		
+	}
+	@EJB
+	public List<Client> getListClient() {
+		return em.createQuery("select c from Client c order by a.nom asc", Client.class)
+				 .getResultList();
 	}
 
 }

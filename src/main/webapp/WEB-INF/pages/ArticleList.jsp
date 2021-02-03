@@ -13,9 +13,9 @@
 <%@include file="commons/menu.jsp" %>
 
 <h1>Liste des Articles</h1>
-
+     
 <table>
- <c:forEach var="p" items="${listArticles}" >
+ <c:forEach var="a" items="${listArticles}" >
     <tr>
 	     <td><c:out value="${a}"></c:out></td>
 	     

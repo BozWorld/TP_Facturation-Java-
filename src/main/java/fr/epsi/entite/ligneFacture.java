@@ -1,14 +1,17 @@
 package fr.epsi.entite;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class ligneFacture {
+public class LigneFacture {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -17,12 +20,10 @@ public class ligneFacture {
 	
 	private double prix;
 	
-	@OneToOne
-	@JoinTable(name = "Facture")
+	@ManyToOne
 	private Facture facture;
 	
-	@OneToOne
-	@JoinTable(name = "Article")
+	@ManyToOne
 	private Article article;
 	
 	public int getqte() {

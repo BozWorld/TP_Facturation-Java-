@@ -15,7 +15,7 @@
 <h1>Liste des Factures</h1>
 
 <table>
- <c:forEach var="p" items="${listFactures}" >
+ <c:forEach var="f" items="${listFactures}" >
     <tr>
 	     <td><c:out value="${f}"></c:out></td>
 	     

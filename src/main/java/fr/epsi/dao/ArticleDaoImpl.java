@@ -1,6 +1,10 @@
 package fr.epsi.dao;
 
+import java.util.List;
+
+import javax.ejb.EJB;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
@@ -9,6 +13,8 @@ import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 import fr.epsi.entite.Article;
+import fr.epsi.entite.Client;
+import fr.epsi.entite.LigneFacture;
 
 public class ArticleDaoImpl implements ArticleDao{
 
@@ -21,6 +27,13 @@ public class ArticleDaoImpl implements ArticleDao{
 	public void create(Article a) {
 			try {
 				utx.begin();
+				Article newArticle = new Article();
+				newArticle.setnom(a.getnom());
+				newArticle.setprix(a.getprix());
+				List<LigneFacture> ligneFacture = em.createQuery("select l from LigneFacture where l.id =:id",LigneFacture.class)
+											.setParameter("id",a.getligneFactureList())
+											.getResultList();
+				newArticle.setLigneFactureList(a.getligneFactureList());
 			} catch (NotSupportedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -52,5 +65,10 @@ public class ArticleDaoImpl implements ArticleDao{
 			}
 			
 		}
+	@EJB
+	public List<Article> getListArticles() {
+		return em.createQuery("select a from Article a order by a.nom asc", Article.class)
+				 .getResultList();
+	}
 		
 	}

@@ -1,5 +1,6 @@
 package fr.epsi.entite;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -19,8 +20,7 @@ public class Client {
 	
 	private String adresse;
 	@OneToMany
-	@JoinTable(name = "facture")
-	private Set<Facture> factureList;
+	private List<Facture> factureList;
 	
 	public String getnom() {
 		return nom;
@@ -37,11 +37,11 @@ public class Client {
 		this.adresse = adresse ;
 	}
 	
-	public Set<Facture> getFactureList() {
+	public List<Facture> getFactureList() {
 		return factureList;
 	}
 	
-	public void setFactureList(Set<Facture> factureList) {
+	public void setFactureList(List<Facture> factureList) {
 		this.factureList = factureList;
 	}
 }

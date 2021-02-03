@@ -1,9 +1,12 @@
 package fr.epsi.entite;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Article {
@@ -15,11 +18,15 @@ public class Article {
 	
 	private double prix;
 	
+	@OneToMany
+	private List<LigneFacture> ligneFactureList;
+
+	
 	public String getnom() {
 		return nom;
 	}
 	
-	public void setNom(String nom) {
+	public void setnom(String nom) {
 		this.nom = nom;
 	}
 	
@@ -29,7 +36,14 @@ public class Article {
 	public void setprix(double prix) {
 		this.prix = prix;
 	}
-
+	
+	public List<LigneFacture> getligneFactureList() {
+		return ligneFactureList;
+	}
+	
+	public void setLigneFactureList(List<LigneFacture> ligneFactureList) {
+		this.ligneFactureList = ligneFactureList;
+	}
 	
 
 	

@@ -1,5 +1,8 @@
 package fr.epsi.dao;
 
+import java.util.List;
+
+import javax.ejb.EJB;
 import javax.persistence.EntityManager;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
@@ -8,6 +11,7 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
+import fr.epsi.entite.Client;
 import fr.epsi.entite.Facture;
 
 public class FactureDaoImpl implements FactureDao{
@@ -51,6 +55,11 @@ public class FactureDaoImpl implements FactureDao{
 			e.printStackTrace();
 		}
 		
+	}
+	@EJB
+	public List<Facture> getListFacture() {
+		return em.createQuery("select f from Facture f order by a.nom asc", Facture.class)
+				 .getResultList();
 	}
 
 }
