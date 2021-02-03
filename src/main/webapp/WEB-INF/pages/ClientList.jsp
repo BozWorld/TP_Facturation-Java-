@@ -15,7 +15,7 @@
 <h1>Liste des Clients</h1>
 
 <table>
- <c:forEach var="p" items="${listClient}" >
+ <c:forEach var="c" items="${listClient}" >
     <tr>
 	     <td><c:out value="${c}"></c:out></td>
 	     

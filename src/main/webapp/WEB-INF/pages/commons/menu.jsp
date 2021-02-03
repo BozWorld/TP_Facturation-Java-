@@ -8,7 +8,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="produits?action=list">Clients</a></li>
         <li><a href="badges.html">Article</a></li>
-        <li><a href="collapsible.html">Comptabilite</a></li>
+        <li><a href="collapsible.html">Factures</a></li>
       </ul>
     </div>
   </nav>
