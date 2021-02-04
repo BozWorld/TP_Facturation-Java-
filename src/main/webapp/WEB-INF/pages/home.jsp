@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Bienvenue !!</title>
+<title>Bienvenue danc votre gestionnaire de facture</title>
     <%@include file="commons/header.jsp" %>
 
 </head>

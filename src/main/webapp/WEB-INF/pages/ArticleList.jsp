@@ -17,8 +17,9 @@
 <table>
  <c:forEach var="a" items="${listArticles}" >
     <tr>
-	     <td><c:out value="${a}"></c:out></td>
-	     
+    	 <td><c:out value="${f.id}"></c:out></td>
+	     <td><c:out value="${a.nom}"></c:out></td>
+	     <td><c:out value="${a.prix}"></c:out></td>
     </tr>
  </c:forEach>
  </table>

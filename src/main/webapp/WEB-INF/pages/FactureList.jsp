@@ -17,7 +17,10 @@
 <table>
  <c:forEach var="f" items="${listFactures}" >
     <tr>
-	     <td><c:out value="${f}"></c:out></td>
+	     <td><c:out value="${f.numero}"></c:out></td>
+	     <td><c:out value="${f.date}"></c:out></td>
+	     <td><c:out value="${f.client}"></c:out></td>
+	     <td><c:out value="${f.prix}"></c:out></td>
 	     
     </tr>
  </c:forEach>

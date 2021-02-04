@@ -17,8 +17,8 @@
 <table>
  <c:forEach var="c" items="${listClient}" >
     <tr>
-	     <td><c:out value="${c}"></c:out></td>
-	     
+	     <td><c:out value="${c.nom}"></c:out></td>
+	     <td><c:out value="${c.adresse}"></c:out></td>
     </tr>
  </c:forEach>
  </table>
